@@ -1,6 +1,6 @@
-# Claude API Integration
+# Nustiu API
 
-A FastAPI backend that integrates with the Claude API, featuring a clean layered architecture and easy prompt engineering capabilities.
+A FastAPI backend service that provides a clean, layered architecture for AI-powered interactions. The service is designed to be easily extensible and maintainable.
 
 ## Project Structure
 
@@ -26,7 +26,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file in the root directory with your Anthropic API key:
+3. Create a `.env` file in the root directory with your API key:
 ```
 ANTHROPIC_API_KEY=your_api_key_here
 ```
@@ -44,22 +44,24 @@ The API will be available at `http://localhost:8000`
 
 ### POST /api/chat
 
-Send a message to Claude and get a response.
+Send a message and receive an AI-generated response.
 
 Request body:
 ```json
 {
-    "message": "Your message here"
+    "message": "Your message here",
+    "model_name": "optional-model-name",  // Optional, defaults to "claude-3-sonnet-20240229"
+    "max_tokens": 3000                    // Optional, defaults to 3000, range: 1-4096
 }
 ```
 
 Response:
 ```json
 {
-    "response": "Claude's response"
+    "response": "AI-generated response"
 }
 ```
 
 ## Prompt Engineering
 
-The prompt templates are located in `app/prompts/templates.py`. You can modify the `DEFAULT_PROMPT_TEMPLATE` to customize how user inputs are processed before being sent to Claude. 
+The prompt templates are located in `app/prompts/templates.py`. You can modify the `DEFAULT_PROMPT_TEMPLATE` to customize how user inputs are processed before being sent to the AI service. 
